@@ -1,0 +1,25 @@
+debug: true
+
+server:
+  host: "localhost"
+  port: 8080
+
+database:
+  host: "10.3.21.250"
+  port: 5432
+  user: "postgres"
+  password: "1234567890"
+  db_name: "tg-im"
+
+jwt:
+  jwt_secret: "your_secret_key"
+
+logs:
+  level: debug
+  directory: logs
+  file_name: server
+  to_file: true
+  max_size: 10
+  max_backups: 2
+  max_age: 7
+  compress: true

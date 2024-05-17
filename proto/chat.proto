@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "tg-im/server/rpc/chat";
+
+import "user.proto";
+import "google/protobuf/timestamp.proto";
+
+
+// 消息内容类型
+enum MessageType {
+  TEXT = 0; // 文本消息
+  IMAGE = 1; // 图片消息
+  FILE = 2;  // 文件消息
+  AUDIO = 3; // 音频消息
+  VIDEO = 4; // 视频消息
+}
+
+// 消息状态
+enum  MessageStatus {
+  SENT = 0; // 已发送
+  DELIVERED = 1; // 已送达
+  READ = 2; // 已读
+  RECEIVED = 3; // 已接收
+  FAILED = 4; // 发送失败
+}
+
+// 会话类型
+enum ConversationType {
+  PRIVATE = 0; // 私聊
+  GROUP = 1; // 群聊
+}
+
+
+// 消息主体结构
+message Message {
+  string id = 1; // 消息ID
+  string conversationId = 2; // 会话ID
+  string sender_id = 3; // 发送者ID
+  MessageType type = 4; // 消息类型
+  string content = 5; // 消息内容
+  google.protobuf.Timestamp timestamp = 6; // 时间戳
+  MessageStatus status = 7; // 消息状态
+}
+
+// 会话
+message Conversation {
+  string id = 1; // 会话ID
+  ConversationType type = 2; // 会话类型
+  string name = 3; // 会话名称
+  string avatar = 4; // 会话头像
+  repeated string participants_ids = 5; // 参与者ID
+  google.protobuf.Timestamp last_message_time = 6; // 更新时间
+}
+
+// 服务接口
+service ChatService {
+  // 发送消息
+  rpc SendMessage(Message) returns (Message) {}
+  // 撤回
+  rpc RecallMessage(Message) returns (Message) {}
+  // 获取
+  rpc FetchMessage(Conversation) returns (stream Message) {}
+  // 更新状态
+  rpc UpdateMessageStatus(Message) returns (Message) {}
+  // 创建会话
+  rpc CreateConversation(Conversation) returns (Conversation) {}
+  // 获取会话
+  rpc FetchConversation(user.User) returns (stream Conversation) {}
+}

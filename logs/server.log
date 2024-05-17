@@ -1,0 +1,30 @@
+{"level":"info","timestamp":"2024-05-13T18:04:07.775+0800","caller":"cmd/main.go:38","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-13T18:06:42.298+0800","caller":"cmd/main.go:38","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-13T18:06:42.298+0800","caller":"cmd/main.go:39","msg":"config file: c"}
+{"level":"info","timestamp":"2024-05-13T18:07:11.201+0800","caller":"cmd/main.go:38","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-13T18:07:11.202+0800","caller":"cmd/main.go:39","msg":"config file: &{{localhost %!s(int=8080)} { %!s(int=0)   } { %!s(int=0)} {logs server %!s(bool=true) debug %!s(int=10) %!s(int=7) %!s(int=2) %!s(bool=true)}}"}
+{"level":"info","timestamp":"2024-05-14T10:48:50.351+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:48:50.351+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"error","timestamp":"2024-05-14T10:48:50.359+0800","caller":"cmd/main.go:48","msg":"Error loading database:","error":"failed to connect to `host=10.3.21.250 user=postgres database=port=%!s(int=5432)`: server error (FATAL: database \"port=%!s(int=5432)\" does not exist (SQLSTATE 3D000))","stacktrace":"main.main\n\t/Users/dianchukeji/work/tg-im/server/cmd/main.go:48\nruntime.main\n\t/Users/dianchukeji/sdk/go1.22.3/src/runtime/proc.go:271"}
+{"level":"info","timestamp":"2024-05-14T10:49:16.644+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:49:16.645+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"error","timestamp":"2024-05-14T10:49:16.653+0800","caller":"cmd/main.go:48","msg":"Error loading database:","error":"failed to connect to `host=10.3.21.250 user=postgres database=port=5432`: server error (FATAL: database \"port=5432\" does not exist (SQLSTATE 3D000))","stacktrace":"main.main\n\t/Users/dianchukeji/work/tg-im/server/cmd/main.go:48\nruntime.main\n\t/Users/dianchukeji/sdk/go1.22.3/src/runtime/proc.go:271"}
+{"level":"info","timestamp":"2024-05-14T10:49:58.197+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:49:58.197+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"error","timestamp":"2024-05-14T10:49:58.204+0800","caller":"cmd/main.go:48","msg":"Error loading database:","error":"failed to connect to `host=10.3.21.250 user=postgres database=port=5432`: server error (FATAL: database \"port=5432\" does not exist (SQLSTATE 3D000))","stacktrace":"main.main\n\t/Users/dianchukeji/work/tg-im/server/cmd/main.go:48\nruntime.main\n\t/Users/dianchukeji/sdk/go1.22.3/src/runtime/proc.go:271"}
+{"level":"info","timestamp":"2024-05-14T10:51:32.177+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:51:32.179+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"info","timestamp":"2024-05-14T10:51:38.765+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:51:38.765+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"info","timestamp":"2024-05-14T10:51:42.646+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:51:42.646+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"info","timestamp":"2024-05-14T10:52:51.905+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:52:51.906+0800","caller":"cmd/main.go:43","msg":"config file: ","config file":"c"}
+{"level":"info","timestamp":"2024-05-14T10:55:40.165+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T10:55:40.166+0800","caller":"cmd/main.go:43","msg":"config file: &{true {localhost 8080} {10.3.21.250 5432 postgres 1234567890 tg-im} { 0} {logs server true debug 10 7 2 true}}"}
+{"level":"info","timestamp":"2024-05-14T11:49:04.491+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T11:49:04.492+0800","caller":"cmd/main.go:43","msg":"config file: &{true {localhost 8080} {10.3.21.250 5432 postgres 1234567890 tg-im} { 0} {logs server true debug 10 7 2 true}}"}
+{"level":"info","timestamp":"2024-05-14T12:00:05.564+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T12:00:05.565+0800","caller":"cmd/main.go:43","msg":"config file: &{true {localhost 8080} {10.3.21.250 5432 postgres 1234567890 tg-im} { 0} {logs server true debug 10 7 2 true}}"}
+{"level":"info","timestamp":"2024-05-14T12:00:40.106+0800","caller":"cmd/main.go:42","msg":"Server started"}
+{"level":"info","timestamp":"2024-05-14T12:00:40.106+0800","caller":"cmd/main.go:43","msg":"config file: &{true {localhost 8080} {10.3.21.250 5432 postgres 1234567890 tg-im} { 0} {logs server true debug 10 7 2 true}}"}

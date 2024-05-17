@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "tg-im/server/rpc/user";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message User {
+    string id = 1; // 用户id
+    string nickname = 2; // 用户昵称
+    string avatar = 3; // 用户头像
+    string status = 4; // 用户状态
+    google.protobuf.Timestamp last_active_at = 5; // 用户最后活跃时间
+}
+
+
+
+// 查询
+message GetUserRequest {
+    string id = 1; // 用户id
+}
+
+message GetUserResponse {
+    User user = 1; // 用户信息
+}
+
+message SearchUserRequest {
+    string keyword = 1; // 关键字
+    int32 page = 2; // 页码
+    int32 page_size = 3; // 每页数量
+}
+
+message SearchUserResponse {
+    repeated User users = 1; // 用户列表
+    int32 total = 2; // 总数
+}
+
+// 更新
+message UpdateUserRequest {
+    User user = 1; // 用户信息
+}
+
+message UpdateUserResponse {
+    User user = 1; // 用户信息
+}
+
+message Friendship {
+    string user_id = 1; // 用户id
+    string friend_id = 2; // 好友id
+}
+
+message FriendListRequest {
+    string user_id = 1; // 用户id
+}
+
+message FriendListResponse {
+    repeated User friends = 1; // 好友列表
+}
+
+message FriendRequest {
+    string user_id = 1; // 用户id
+    string friend_id = 2; // 好友id
+}
+
+message FriendResponse {
+    User friend = 1; // 好友信息
+}
+
+service UserService {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+    rpc SearchUser(SearchUserRequest) returns (SearchUserResponse) {}
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+
+    rpc AddFriend(FriendRequest) returns (FriendResponse) {}
+    rpc RemoveFriend(FriendRequest) returns (google.protobuf.Empty) {}
+    rpc GetFriendList(FriendListRequest) returns (FriendListResponse) {}
+    rpc GetFriendInfo(FriendRequest) returns (FriendResponse) {}
+}
