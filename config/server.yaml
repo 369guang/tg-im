@@ -11,6 +11,12 @@ database:
   password: "1234567890"
   db_name: "tg-im"
 
+cache:
+  host: "10.3.21.250"
+  port: 6379
+  password: "guang123"
+  db: 8
+
 jwt:
   jwt_secret: "your_secret_key"
 

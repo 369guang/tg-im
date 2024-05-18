@@ -7,12 +7,12 @@
 package chat
 
 import (
+	user "github.com/369guang/tg-im/server/rpc/user"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
-	user "tg-im/server/rpc/user"
 )
 
 const (

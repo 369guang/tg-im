@@ -11,6 +11,7 @@ type Config struct {
 		Host string `mapstructure:"host"`
 		Port int    `mapstructure:"port"`
 	} `mapstructure:"server"`
+
 	Database struct {
 		Host     string `mapstructure:"host"`
 		Port     int    `mapstructure:"port"`
@@ -18,6 +19,13 @@ type Config struct {
 		Password string `mapstructure:"password"`
 		DbName   string `mapstructure:"db_name"`
 	} `mapstructure:"database"`
+
+	Cache struct { // redis cluster
+		Host     string `mapstructure:"host"`
+		Port     int    `mapstructure:"port"`
+		Password string `mapstructure:"password"`
+		DB       int    `mapstructure:"db"`
+	} `mapstructure:"cache"`
 
 	JWT struct {
 		Secret string `mapstructure:"secret"`

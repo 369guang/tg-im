@@ -1,8 +1,8 @@
 package migrations
 
 import (
-	"tg-im/core/database"
-	"tg-im/server/internal/db/model"
+	"github.com/369guang/tg-im/core/database"
+	"github.com/369guang/tg-im/server/internal/db/model"
 )
 
 func Migrate() {

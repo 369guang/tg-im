@@ -33,3 +33,6 @@ protoc  -I=./proto \
         --go-grpc_out=.. \
         --go-grpc_opt=Mssh.proto=.. \
         ./proto/${proto_module}.proto
+
+# sed匹配tg-im替换为github.com/369guang/tg-im
+sed -i '' 's/tg-im/github.com\/369guang\/tg-im/g' server/rpc/${proto_module}/*.pb.go
