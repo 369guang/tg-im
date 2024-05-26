@@ -3,7 +3,7 @@ package cache
 import (
 	"context"
 	"fmt"
-	"github.com/369guang/tg-im/core/logs"
+	"github.com/369guang/tg-im/internal/logs"
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 	"time"

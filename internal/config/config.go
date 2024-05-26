@@ -12,6 +12,11 @@ type Config struct {
 		Port int    `mapstructure:"port"`
 	} `mapstructure:"server"`
 
+	Tls struct {
+		CertFile string `mapstructure:"cert_file"`
+		KeyFile  string `mapstructure:"key_file"`
+	} `mapstructure:"tls"`
+
 	Database struct {
 		Host     string `mapstructure:"host"`
 		Port     int    `mapstructure:"port"`

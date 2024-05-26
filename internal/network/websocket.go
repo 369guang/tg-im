@@ -1,7 +1,7 @@
 package network
 
 import (
-	"github.com/369guang/tg-im/core/logs"
+	"github.com/369guang/tg-im/internal/logs"
 	"github.com/gorilla/websocket"
 	"go.uber.org/zap"
 	"log"

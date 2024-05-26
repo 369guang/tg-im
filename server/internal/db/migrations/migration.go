@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"github.com/369guang/tg-im/core/database"
+	"github.com/369guang/tg-im/internal/database"
 	"github.com/369guang/tg-im/server/internal/db/model"
 )
 

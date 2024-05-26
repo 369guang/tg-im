@@ -3,10 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/369guang/tg-im/core/cache"
-	"github.com/369guang/tg-im/core/config"
-	"github.com/369guang/tg-im/core/database"
-	"github.com/369guang/tg-im/core/logs"
+	"github.com/369guang/tg-im/internal/cache"
+	"github.com/369guang/tg-im/internal/config"
+	"github.com/369guang/tg-im/internal/database"
+	"github.com/369guang/tg-im/internal/logs"
+	"github.com/369guang/tg-im/internal/network"
 	"github.com/369guang/tg-im/server/internal/db/migrations"
 	"go.uber.org/zap"
 )
@@ -56,7 +57,7 @@ func main() {
 
 	// 缓存
 	cache.InitCache(cfg.Cache.Host, cfg.Cache.Password, cfg.Cache.Port, cfg.Cache.DB)
-	fmt.Println("init cache: ")
+	fmt.Println("init cache: success ")
 
 	if cfg.DEBUG { // debug模式下才执行迁移
 		//database.DB = database.DB.Debug()
@@ -73,5 +74,25 @@ func main() {
 	//	logs.Logger.Error("Error starting server:", zap.Error(err))
 	//	panic(err)
 	//}
+
+	// quic
+	server, err := network.NewQuicServer(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port), cfg.Tls.CertFile, cfg.Tls.KeyFile)
+	if err != nil {
+		logs.Logger.Error("Error starting server:", zap.Error(err))
+		panic(err)
+	}
+
+	err = server.Serve()
+	select {}
+
+	// webtransport
+	//server, err := network.NewWebTransportServer(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port), cfg.Tls.CertFile, cfg.Tls.KeyFile)
+	//if err != nil {
+	//	logs.Logger.Error("Error starting server:", zap.Error(err))
+	//	panic(err)
+	//}
+	//fmt.Println("init server: ", fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port))
+	//server.Serve()
+	//select {}
 
 }
