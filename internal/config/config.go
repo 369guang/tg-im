@@ -7,10 +7,26 @@ import (
 
 type Config struct {
 	DEBUG  bool `mapstructure:"debug"`
+	Common struct {
+		StoreMessageHistory     bool   `mapstructure:"store_message_history"`
+		StoreMessageHistoryDays int    `mapstructure:"store_message_history_days"`
+		StoreOfflineMessage     bool   `mapstructure:"store_offline_message"`
+		SecretKey               string `mapstructure:"secret_key"`
+	} `mapstructure:"common"`
+
 	Server struct {
 		Host string `mapstructure:"host"`
 		Port int    `mapstructure:"port"`
+		Id   string `mapstructure:"id"`
 	} `mapstructure:"server"`
+
+	Rpc struct {
+		Host string `mapstructure:"host"`
+		Port int    `mapstructure:"port"`
+		Name string `mapstructure:"name"`
+		// 多个etcd
+		Etcd []string `mapstructure:"etcd"`
+	} `mapstructure:"rpc"`
 
 	Tls struct {
 		CertFile string `mapstructure:"cert_file"`

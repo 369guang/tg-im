@@ -1,8 +1,22 @@
 debug: true
 
+common:
+  store_message_history: true # 是否存储消息历史记录
+  store_message_history_days: 7 # 消息历史记录存储天数
+  store_offline_message: true # 是否存储离线消息
+  secret_key: "your_secret_key" # 加密密钥
+
 server:
   host: "0.0.0.0"
   port: 9991
+  id: "node-1"
+
+rpc:
+  host: "0.0.0.0"
+  port: 9912
+  etcd:
+    - "127.0.0.1:2379"
+  name: "tg-im-server"
 
 tls:
   cert_file: "tls/server.crt"
@@ -24,6 +38,8 @@ cache:
 jwt:
   jwt_secret: "your_secret_key"
 
+
+# 日志配置
 logs:
   level: debug
   directory: logs

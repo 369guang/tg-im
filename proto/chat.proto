@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package chat;
 
-option go_package = "tg-im/server/rpc/chat";
+option go_package = "github.com/369guang/tg-im/proto";
 
 import "user.proto";
 import "google/protobuf/timestamp.proto";

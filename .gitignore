@@ -11,3 +11,4 @@ tmp.out
 .idea/
 .vscode/
 logs
+/logs/
