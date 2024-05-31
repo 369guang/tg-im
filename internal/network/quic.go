@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
-	"github.com/369guang/tg-im/internal/logs"
 	"github.com/quic-go/quic-go"
 	"go.uber.org/zap"
 	"io"

@@ -6,7 +6,6 @@ import (
 	"github.com/369guang/tg-im/internal/cache"
 	"github.com/369guang/tg-im/internal/config"
 	"github.com/369guang/tg-im/internal/database"
-	"github.com/369guang/tg-im/internal/logs"
 	"github.com/369guang/tg-im/internal/network"
 	"github.com/369guang/tg-im/server/internal/db/migrations"
 	"go.uber.org/zap"

@@ -1,0 +1,51 @@
+debug: true
+
+common:
+  store_message_history: true # 是否存储消息历史记录
+  store_message_history_days: 7 # 消息历史记录存储天数
+  store_offline_message: true # 是否存储离线消息
+  secret_key: "your_secret_key" # 加密密钥
+
+server:
+  host: "0.0.0.0"
+  port: 9991
+  id: "node-1"
+
+rpc:
+  host: "0.0.0.0"
+  port: 9912
+  etcd:
+    - "127.0.0.1:2379"
+  name: "tg-im-server"
+
+tls:
+  cert_file: "tls/server.crt"
+  key_file: "tls/server.key"
+
+database:
+  host: "10.3.21.250"
+  port: 5432
+  user: "postgres"
+  password: "1234567890"
+  db_name: "tg-im"
+
+cache:
+  host: "10.3.21.250"
+  port: 6379
+  password: "guang123"
+  db: 8
+
+jwt:
+  jwt_secret: "your_secret_key"
+
+
+# 日志配置
+logs:
+  level: debug
+  directory: logs
+  file_name: server
+  to_file: true
+  max_size: 10
+  max_backups: 2
+  max_age: 7
+  compress: true
