@@ -15,8 +15,6 @@ message User {
     google.protobuf.Timestamp last_active_at = 5; // 用户最后活跃时间
 }
 
-
-
 // 查询
 message GetUserRequest {
     string id = 1; // 用户id

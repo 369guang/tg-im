@@ -43,7 +43,7 @@ jwt:
 logs:
   level: debug
   directory: logs
-  file_name: server
+  file_name: gateway
   to_file: true
   max_size: 10
   max_backups: 2

@@ -4,8 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"github.com/369guang/tg-im/internal/config"
-	"github.com/369guang/tg-im/pkg/loggger"
+	ml "github.com/369guang/tg-im/internal/middleware/logger"
+	"github.com/369guang/tg-im/pkg/logger"
+	"github.com/369guang/tg-im/pkg/net/rpc"
 	"github.com/369guang/tg-im/pkg/net/web"
+	"github.com/369guang/tg-im/proto"
 	"github.com/369guang/tg-im/services/gateway/internal/routers"
 	"go.uber.org/zap"
 )
@@ -45,12 +48,38 @@ func main() {
 
 	// 启动http服务
 	httpServer := web.NewHTTPServer()
+	httpServer.UseMiddleware(ml.LoggerMiddleware)
 	httpServer.RegisterRoute(routers.NewRouter)
-	err = httpServer.Start(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port), false, cfg.Tls.CertFile, cfg.Tls.KeyFile)
-	if err != nil {
-		logs.Logger.Error("http server start failed: ", zap.Error(err))
+
+	go func() {
+		logs.Logger.Info("http server start , listen addr and port: " + fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port))
+		fmt.Println("http server start , listen addr and port: " + fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port))
+		err := httpServer.Start(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port), false, cfg.Tls.CertFile, cfg.Tls.KeyFile)
+		if err != nil {
+			logs.Logger.Error("http server start failed: ", zap.Error(err))
+			fmt.Println("http server start failed: ", err)
+			panic(err)
+		}
+	}()
+
+	// 启动rpc服务
+	rpcOptions := rpc.ServerOptions{
+		Host:               cfg.Rpc.Host,
+		Port:               cfg.Rpc.Port,
+		Name:               cfg.Rpc.Name,
+		EtcdServers:        cfg.Rpc.Etcd,
+		CaPemFile:          cfg.Tls.CertFile,
+		CaKeyFile:          cfg.Tls.KeyFile,
+		MaxRecvMessageSize: 1024 * 1024 * 10,
+		MaxSendMessageSize: 1024 * 1024 * 10,
+	}
+	logs.Logger.Info("rpc server start , listen addr and port: " + fmt.Sprintf("%s:%d", cfg.Rpc.Host, cfg.Rpc.Port))
+	fmt.Println("rpc server start , listen addr and port: " + fmt.Sprintf("%s:%d", cfg.Rpc.Host, cfg.Rpc.Port))
+	rpcServer := rpc.NewBaseServer(&rpcOptions)
+	rpcServer.Register("auth", new(proto.AuthServiceImpl))
+	if err := rpcServer.Start(); err != nil {
+		logs.Logger.Error("rpc server start failed: ", zap.Error(err))
+		fmt.Println("rpc server start failed: ", err)
 		panic(err)
 	}
-
-	// 启动rpcx服务
 }

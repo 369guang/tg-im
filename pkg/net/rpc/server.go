@@ -67,7 +67,8 @@ func (s *BaseServer) Start() error {
 		}
 	}
 
-	return s.Srv.Serve("quic", uri)
+	fmt.Println("quic uri: ", uri)
+	return s.Srv.Serve("tcp", uri)
 }
 
 func NewBaseServer(option *ServerOptions) *BaseServer {
