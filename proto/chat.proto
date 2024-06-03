@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package chat;
+package tg_im.space_water_bear.github.com;
 
-option go_package = "github.com/369guang/tg-im/proto";
+option go_package = "/proto";
 
-import "user.proto";
+import "github.com/space-water-bear/tg-im/proto/user.proto";
 import "google/protobuf/timestamp.proto";
 
 
@@ -55,17 +55,17 @@ message Conversation {
 }
 
 // 服务接口
-service ChatService {
-  // 发送消息
-  rpc SendMessage(Message) returns (Message) {}
-  // 撤回
-  rpc RecallMessage(Message) returns (Message) {}
-  // 获取
-  rpc FetchMessage(Conversation) returns (stream Message) {}
-  // 更新状态
-  rpc UpdateMessageStatus(Message) returns (Message) {}
-  // 创建会话
-  rpc CreateConversation(Conversation) returns (Conversation) {}
-  // 获取会话
-  rpc FetchConversation(user.User) returns (stream Conversation) {}
-}
+//service ChatService {
+//  // 发送消息
+//  rpc SendMessage(Message) returns (Message) {}
+//  // 撤回
+//  rpc RecallMessage(Message) returns (Message) {}
+//  // 获取
+//  rpc FetchMessage(Conversation) returns (stream Message) {}
+//  // 更新状态
+//  rpc UpdateMessageStatus(Message) returns (Message) {}
+//  // 创建会话
+//  rpc CreateConversation(Conversation) returns (Conversation) {}
+//  // 获取会话
+//  rpc FetchConversation(user.User) returns (stream Conversation) {}
+//}

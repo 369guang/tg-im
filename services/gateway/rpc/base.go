@@ -3,19 +3,17 @@ package rpc
 import (
 	"context"
 	"fmt"
-	"github.com/369guang/tg-im/proto"
+	"github.com/space-water-bear/tg-im/proto"
 )
 
 type GatewayImpl struct {
 }
 
-func (g *GatewayImpl) Login(ctx context.Context, args *proto.AuthRequest, reply *proto.AuthResponse) error {
+func (g *GatewayImpl) Login(ctx context.Context, requests *proto.AuthUser, response *proto.AuthResponse) error {
 
-	fmt.Println("Login 输入:", args, "返回", reply)
+	fmt.Println("Login 输入:", requests, "返回", response)
 
-	*reply = proto.AuthResponse{
-		Token: "token",
-	}
+	response.Token = "123456"
 
 	return nil
 }

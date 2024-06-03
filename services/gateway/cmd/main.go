@@ -3,13 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/369guang/tg-im/internal/config"
-	ml "github.com/369guang/tg-im/internal/middleware/logger"
-	"github.com/369guang/tg-im/pkg/logger"
-	"github.com/369guang/tg-im/pkg/net/rpc"
-	"github.com/369guang/tg-im/pkg/net/web"
-	"github.com/369guang/tg-im/proto"
-	"github.com/369guang/tg-im/services/gateway/internal/routers"
+	"github.com/space-water-bear/tg-im/internal/config"
+	ml "github.com/space-water-bear/tg-im/internal/middleware/logger"
+	logs "github.com/space-water-bear/tg-im/pkg/logger"
+	"github.com/space-water-bear/tg-im/pkg/net/rpc"
+	"github.com/space-water-bear/tg-im/pkg/net/web"
+	"github.com/space-water-bear/tg-im/services/gateway/internal/routers"
+	rpc2 "github.com/space-water-bear/tg-im/services/gateway/rpc"
 	"go.uber.org/zap"
 )
 
@@ -76,7 +76,7 @@ func main() {
 	logs.Logger.Info("rpc server start , listen addr and port: " + fmt.Sprintf("%s:%d", cfg.Rpc.Host, cfg.Rpc.Port))
 	fmt.Println("rpc server start , listen addr and port: " + fmt.Sprintf("%s:%d", cfg.Rpc.Host, cfg.Rpc.Port))
 	rpcServer := rpc.NewBaseServer(&rpcOptions)
-	rpcServer.Register("auth", new(proto.AuthServiceImpl))
+	rpcServer.Register("gateway", new(rpc2.GatewayImpl))
 	if err := rpcServer.Start(); err != nil {
 		logs.Logger.Error("rpc server start failed: ", zap.Error(err))
 		fmt.Println("rpc server start failed: ", err)

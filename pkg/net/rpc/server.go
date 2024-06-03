@@ -51,10 +51,11 @@ func (s *BaseServer) Start() error {
 	uri := fmt.Sprintf("%s:%d", s.Option.Host, s.Option.Port)
 
 	if s.etcdRegistry != nil {
-		s.etcdRegistry.ServiceAddress = fmt.Sprintf("tcp@%s", uri)
+		s.etcdRegistry.ServiceAddress = fmt.Sprintf("quic@%s", uri)
 
 		err := s.etcdRegistry.Start()
 		if err != nil {
+			fmt.Println("etcd registry failed: ", err)
 			return err
 		}
 
@@ -63,12 +64,12 @@ func (s *BaseServer) Start() error {
 
 	for _, f := range s.reg {
 		if err := f(s); err != nil {
+			fmt.Println("register failed: ", err)
 			return err
 		}
 	}
 
-	fmt.Println("quic uri: ", uri)
-	return s.Srv.Serve("tcp", uri)
+	return s.Srv.Serve("quic", uri)
 }
 
 func NewBaseServer(option *ServerOptions) *BaseServer {

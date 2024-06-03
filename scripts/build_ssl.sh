@@ -12,6 +12,6 @@ SSLDIR=$2
 openssl req -x509 -newkey rsa:4096 -days 3650 -nodes \
         -keyout "${SSLDIR}/${SSLNAME}.key" \
         -out "${SSLDIR}/${SSLNAME}.crt" \
-        -subj "/C=CN/ST=GD/L=SZ/O=Acme, Inc./CN=Acme Root CA"
+        -config "${SSLDIR}/${SSLNAME}.conf" \
 
 cp -rf "${SSLDIR}/${SSLNAME}.crt" "${SSLDIR}/${SSLNAME}.pem"

@@ -7,12 +7,12 @@ common:
   secret_key: "your_secret_key" # 加密密钥
 
 server:
-  host: "0.0.0.0"
+  host: "127.0.0.1"
   port: 9991
   id: "node-1"
 
 rpc:
-  host: "0.0.0.0"
+  host: "10.3.21.120"
   port: 9912
   etcd:
     - "127.0.0.1:2379"
@@ -36,7 +36,7 @@ cache:
   db: 8
 
 jwt:
-  jwt_secret: "your_secret_key"
+  secret: "your_secret_key"
 
 
 # 日志配置

@@ -1,22 +1,14 @@
 syntax = "proto3";
 
-package auth;
+package tg_im.space_water_bear.github.com;
 
-option go_package = "github.com/369guang/tg-im/proto";
+option go_package = "/proto";
 
-message Auth {
+message AuthUser {
   string username = 1;
   string password = 2;
 }
 
 message AuthResponse {
   string token = 1;
-}
-
-message AuthRequest {
-  Auth auth = 1;
-}
-
-service AuthService {
-  rpc Auth(AuthRequest) returns (AuthResponse);
 }

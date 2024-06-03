@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/369guang/tg-im/internal/config"
+	"github.com/space-water-bear/tg-im/internal/config"
 )
 
 func main() {

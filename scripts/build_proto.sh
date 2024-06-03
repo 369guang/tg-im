@@ -10,9 +10,8 @@ proto_module=$1
 #handler_dir=$2
 cd $(dirname $0)/..
 protoc  -I=./proto \
-        --go_out=proto \
-        --go_opt=paths=source_relative \
+        --gofast_out=proto \
+        --gofast_opt=paths=source_relative \
         --rpcx_out=proto \
         --rpcx_opt=paths=source_relative \
         ./proto/${proto_module}.proto
-

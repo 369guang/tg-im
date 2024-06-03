@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package group;
+package tg_im.space_water_bear.github.com;
 
-option go_package = "github.com/369guang/tg-im/proto";
+option go_package = "/proto";
 
-import "user.proto";
+import "github.com/space-water-bear/tg-im/proto/user.proto";
 import "google/protobuf/empty.proto";
 
 message Group {
@@ -28,26 +28,26 @@ message GroupInfoResponse {
   Group group = 1; // group
 }
 
-service GroupService {
-  // 创建群组
-  rpc CreateGroup(Group) returns (GroupInfoResponse) {}
-  // 更新群组名称
-  rpc UpdateGroupName(Group) returns (GroupInfoResponse) {}
-  // 更新群组头像
-  rpc UpdateGroupAvatar(Group) returns (GroupInfoResponse) {}
-  // 更新群组公告
-  rpc UpdateGroupAnnouncement(Group) returns (google.protobuf.Empty) {}
-  // 获取群组信息
-  rpc GetGroupInfo(GroupInfoRequest) returns (GroupInfoResponse) {}
-  // 加入群组
-  rpc JoinGroup(GroupOperationRequest) returns (google.protobuf.Empty) {}
-  // 退出群组
-  rpc LeaveGroup(GroupOperationRequest) returns (google.protobuf.Empty) {}
-  // 添加群组成员
-  rpc AddMembers(GroupOperationRequest) returns (google.protobuf.Empty) {}
-  // 移除群组成员
-  rpc RemoveMembers(GroupOperationRequest) returns (google.protobuf.Empty) {}
-  // 解散群组
-  rpc DissolveGroup(GroupOperationRequest) returns (google.protobuf.Empty) {}
-
-}
+//service GroupService {
+//  // 创建群组
+//  rpc CreateGroup(Group) returns (GroupInfoResponse) {}
+//  // 更新群组名称
+//  rpc UpdateGroupName(Group) returns (GroupInfoResponse) {}
+//  // 更新群组头像
+//  rpc UpdateGroupAvatar(Group) returns (GroupInfoResponse) {}
+//  // 更新群组公告
+//  rpc UpdateGroupAnnouncement(Group) returns (google.protobuf.Empty) {}
+//  // 获取群组信息
+//  rpc GetGroupInfo(GroupInfoRequest) returns (GroupInfoResponse) {}
+//  // 加入群组
+//  rpc JoinGroup(GroupOperationRequest) returns (google.protobuf.Empty) {}
+//  // 退出群组
+//  rpc LeaveGroup(GroupOperationRequest) returns (google.protobuf.Empty) {}
+//  // 添加群组成员
+//  rpc AddMembers(GroupOperationRequest) returns (google.protobuf.Empty) {}
+//  // 移除群组成员
+//  rpc RemoveMembers(GroupOperationRequest) returns (google.protobuf.Empty) {}
+//  // 解散群组
+//  rpc DissolveGroup(GroupOperationRequest) returns (google.protobuf.Empty) {}
+//
+//}

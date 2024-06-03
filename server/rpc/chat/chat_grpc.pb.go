@@ -8,7 +8,7 @@ package chat
 
 import (
 	context "context"
-	user "github.com/369guang/tg-im/server/rpc/user"
+	user "github.com/space-water-bear/tg-im/server/rpc/user"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

@@ -2,10 +2,13 @@ package rpc
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"fmt"
 	etcdClient "github.com/rpcxio/rpcx-etcd/client"
 	"github.com/smallnest/rpcx/client"
 	"github.com/smallnest/rpcx/protocol"
+	"os"
 )
 
 type Cli interface {
@@ -23,6 +26,8 @@ type ClientOptions struct {
 	Name        string
 	EtcdServers []string
 	Selector    client.Selector
+	CaPemFile   string
+	CaKeyFile   string
 }
 
 type BaseClient struct {
@@ -39,6 +44,24 @@ func NewBaseClient(options *ClientOptions) (*BaseClient, error) {
 	var discovery client.ServiceDiscovery
 	var err error
 
+	caCertPEM, err := os.ReadFile(options.CaPemFile)
+	if err != nil {
+		panic(err)
+	}
+
+	caCertPool := x509.NewCertPool()
+	ok := caCertPool.AppendCertsFromPEM(caCertPEM)
+	if !ok {
+		panic("failed to parse root certificate")
+	}
+
+	conf := &tls.Config{
+		//InsecureSkipVerify: true,
+		RootCAs: caCertPool,
+	}
+
+	options.TLSConfig = conf
+
 	if options.EtcdServers != nil {
 		discovery, err = etcdClient.NewEtcdV3Discovery(BaseServicePath, options.Name, options.EtcdServers, false, nil)
 		if err != nil {
@@ -46,7 +69,7 @@ func NewBaseClient(options *ClientOptions) (*BaseClient, error) {
 			return nil, err
 		}
 	} else {
-		srv := fmt.Sprintf("%s@%s:%d", "tcp", options.Host, options.Port)
+		srv := fmt.Sprintf("%s@%s:%d", "quic", options.Host, options.Port)
 		discovery, err = client.NewPeer2PeerDiscovery(srv, "")
 		if err != nil {
 			fmt.Println("NewPeer2PeerDiscovery error: ", err)
@@ -86,5 +109,6 @@ func (c *BaseClient) Run() error {
 }
 
 func (c *BaseClient) Close() error {
+
 	return c.cli.Close()
 }

@@ -1,11 +1,10 @@
 syntax = "proto3";
 
-package user;
+package tg_im.space_water_bear.github.com;
 
-option go_package = "github.com/369guang/tg-im/proto";
+option go_package = "/proto";
 
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/empty.proto";
 
 message User {
     string id = 1; // 用户id
@@ -66,13 +65,13 @@ message FriendResponse {
     User friend = 1; // 好友信息
 }
 
-service UserService {
-    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
-    rpc SearchUser(SearchUserRequest) returns (SearchUserResponse) {}
-    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
-
-    rpc AddFriend(FriendRequest) returns (FriendResponse) {}
-    rpc RemoveFriend(FriendRequest) returns (google.protobuf.Empty) {}
-    rpc GetFriendList(FriendListRequest) returns (FriendListResponse) {}
-    rpc GetFriendInfo(FriendRequest) returns (FriendResponse) {}
-}
+//service UserService {
+//    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+//    rpc SearchUser(SearchUserRequest) returns (SearchUserResponse) {}
+//    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+//
+//    rpc AddFriend(FriendRequest) returns (FriendResponse) {}
+//    rpc RemoveFriend(FriendRequest) returns (google.protobuf.Empty) {}
+//    rpc GetFriendList(FriendListRequest) returns (FriendListResponse) {}
+//    rpc GetFriendInfo(FriendRequest) returns (FriendResponse) {}
+//}

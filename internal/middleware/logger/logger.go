@@ -1,8 +1,8 @@
 package logger
 
 import (
-	logs "github.com/369guang/tg-im/pkg/logger"
 	"github.com/labstack/echo/v4"
+	logs "github.com/space-water-bear/tg-im/pkg/logger"
 	"go.uber.org/zap"
 )
 
